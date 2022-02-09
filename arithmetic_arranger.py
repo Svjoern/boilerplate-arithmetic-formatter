@@ -10,16 +10,17 @@ def arithmetic_arranger(problems, show_answer=False):
   res     = ""
 
   for elem in problems:
-    try:
-      arry = split_elements(elem,show_answer)
-    except:
+    test = elem.split(" ")
+    if not test[0].isnumeric():
       return "Error: Numbers must only contain digits."
-
-    if arry[1] != "+" and arry[1] != "-":
+    if not test[2].isnumeric():
+      return "Error: Numbers must only contain digits."
+    if test[1] != "+" and test[1] != "-":
       return "Error: Operator must be '+' or '-'."
-
-    if len(arry[0]) > 4 or len(arry[2]) > 4:
+    if len(test[0]) > 4 or len(test[2]) > 4:
       return "Error: Numbers cannot be more than four digits."
+
+    arry = split_elements(elem,show_answer)
 
     length = 0
     if len(arry[0]) >= len(arry[2]):
